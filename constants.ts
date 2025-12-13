@@ -36,35 +36,35 @@ export const PROJECTS: Project[] = [
     title: 'RAG-based AI Chatbot',
     summary: 'Intelligent Knowledge Base Chatbot using Retrieval-Augmented Generation (RAG) and Milvus vector database for automated customer support.',
     techStack: ['Python', 'LangChain', 'Milvus', 'OpenAI API', 'FastAPI'],
-    repoLink: 'https://github.com/mahesh-bunage',
+    repoLink: 'https://github.com/Mahesh8806/AI-Project1-RAG-based-AI-Chatbot',
     category: 'GenAI'
   },
   {
     title: 'CCPA Data Compliance Pipeline',
     summary: 'Scalable data processing pipeline on AWS EMR using PySpark to handle search, delete, and anonymization requests for CCPA compliance.',
     techStack: ['PySpark', 'AWS EMR', 'Airflow', 'DynamoDB', 'Terraform'],
-    repoLink: 'https://github.com/mahesh-bunage',
+    repoLink: 'https://github.com/Mahesh8806',
     category: 'Data Eng'
   },
   {
     title: 'S3 Storage Cost Optimization',
     summary: 'Automated storage analysis pipeline using AWS S3 Select and Python to generate weekly cost-optimization reports via email.',
     techStack: ['Python', 'AWS S3', 'Airflow', 'AWS SES', 'Pandas'],
-    repoLink: 'https://github.com/mahesh-bunage',
+    repoLink: 'https://github.com/Mahesh8806',
     category: 'Cloud'
   },
   {
     title: 'Enterprise Warehouse Analysis',
     summary: 'Big Data migration project moving RDS data to HBase and Hive for downstream analytics using Apache Spark and Phoenix.',
     techStack: ['Spark', 'HBase', 'Hive', 'AWS RDS', 'Linux'],
-    repoLink: 'https://github.com/mahesh-bunage',
+    repoLink: 'https://github.com/Mahesh8806',
     category: 'Big Data'
   },
   {
     title: 'Predictive Analytics Models',
     summary: 'Developed classification and regression models for business insights using Scikit-Learn and historical data analysis.',
     techStack: ['Python', 'Scikit-Learn', 'Pandas', 'Matplotlib'],
-    repoLink: 'https://github.com/mahesh-bunage',
+    repoLink: 'https://github.com/Mahesh8806',
     category: 'ML'
   }
 ];

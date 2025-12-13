@@ -7,14 +7,9 @@ const Projects: React.FC = () => {
   return (
     <section id="projects" className="py-24 bg-slate-50 dark:bg-slate-950 transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="flex flex-col md:flex-row justify-between items-end mb-12">
-           <div>
-              <h2 className="text-sm font-bold tracking-widest text-cyan-500 uppercase mb-2">Portfolio</h2>
-              <h3 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white">Featured Projects</h3>
-           </div>
-           <a href="https://github.com/mahesh-bunage" target="_blank" rel="noreferrer" className="hidden md:flex items-center gap-2 text-slate-500 hover:text-cyan-400 transition-colors mt-4 md:mt-0">
-             View all on GitHub <Github className="w-4 h-4" />
-           </a>
+        <div className="text-center mb-16">
+           <h2 className="text-sm font-bold tracking-widest text-cyan-500 uppercase mb-2">Portfolio</h2>
+           <h3 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white">Featured Projects</h3>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -63,9 +58,9 @@ const Projects: React.FC = () => {
           ))}
         </div>
         
-        <div className="mt-8 text-center md:hidden">
-            <a href="https://github.com" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 text-cyan-500 font-medium">
-             View all on GitHub <ArrowRight className="w-4 h-4" />
+        <div className="mt-12 text-center">
+            <a href="https://github.com/Mahesh8806" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 hover:border-cyan-500 hover:text-cyan-500 transition-all group font-medium">
+             View all on GitHub <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
            </a>
         </div>
       </div>
