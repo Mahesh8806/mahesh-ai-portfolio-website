@@ -56,7 +56,7 @@ const About: React.FC = () => {
 
             {/* Content */}
             <div className="w-full md:max-w-xl text-center md:text-left">
-              <h2 className="text-sm font-bold tracking-widest text-cyan-500 uppercase mb-3">About Me</h2>
+              <h2 className="text-base font-bold tracking-widest text-cyan-500 uppercase mb-3">About Me</h2>
               <h3 className="text-3xl md:text-4xl font-bold mb-6 text-slate-900 dark:text-white">Bridging Data Engineering & Generative AI</h3>
               
               <div className="space-y-5 text-slate-600 dark:text-slate-400 leading-relaxed text-lg">

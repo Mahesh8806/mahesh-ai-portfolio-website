@@ -23,7 +23,7 @@ const Contact: React.FC = () => {
     setErrorMessage('');
 
     try {
-      // Connects to local FastAPI server on port 8000
+      // Connects to backend API
       const response = await fetch('https://maheshbuange.com/api/contact.php', {
         method: 'POST',
         headers: {
@@ -38,8 +38,8 @@ const Contact: React.FC = () => {
       if (contentType && contentType.includes("application/json")) {
         data = await response.json();
       } else {
-        // If it's not JSON, it might be a generic server error page or empty
-        if (!response.ok) throw new Error(response.statusText);
+        // If it's not JSON, check if request failed
+        if (!response.ok) throw new Error(response.statusText || 'Server error');
         data = {}; 
       }
 
@@ -54,7 +54,7 @@ const Contact: React.FC = () => {
     } catch (error: any) {
       console.error('Submission Error:', error);
       setStatus('error');
-      setErrorMessage('Could not connect to the backend server. Ensure server.py is running on port 8000.');
+      setErrorMessage('Could not connect to the backend server. Please try again later or contact via email.');
     }
   };
 
@@ -63,7 +63,7 @@ const Contact: React.FC = () => {
       <div className="max-w-7xl mx-auto px-6">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">
-            <h2 className="text-sm font-bold tracking-widest text-cyan-500 uppercase mb-2">Get In Touch</h2>
+            <h2 className="text-base font-bold tracking-widest text-cyan-500 uppercase mb-2">Get In Touch</h2>
             <h3 className="text-3xl md:text-4xl font-bold">Let's Discuss AI Solutions</h3>
           </div>
 

@@ -8,7 +8,7 @@ const Projects: React.FC = () => {
     <section id="projects" className="py-24 bg-slate-50 dark:bg-slate-950 transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-16">
-           <h2 className="text-sm font-bold tracking-widest text-cyan-500 uppercase mb-2">Portfolio</h2>
+           <h2 className="text-base font-bold tracking-widest text-cyan-500 uppercase mb-2">Portfolio</h2>
            <h3 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white">Featured Projects</h3>
         </div>
 

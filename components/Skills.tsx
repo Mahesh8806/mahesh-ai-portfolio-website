@@ -15,7 +15,7 @@ const Skills: React.FC = () => {
     <section id="skills" className="py-24 bg-white dark:bg-[#0a0a0a] transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-16">
-          <h2 className="text-sm font-bold tracking-widest text-purple-500 uppercase mb-2">Technical Expertise</h2>
+          <h2 className="text-base font-bold tracking-widest text-purple-500 uppercase mb-2">Technical Expertise</h2>
           <h3 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white">My Skill Set</h3>
         </div>
 
