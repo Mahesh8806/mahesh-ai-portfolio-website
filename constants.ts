@@ -76,8 +76,8 @@ export const EXPERIENCE: ExperienceItem[] = [
     period: '2025 - Present',
     description: [
       'Pursuing Master’s degree specializing in Artificial Intelligence.',
-      'Focus areas: Deep Learning, Data Mining, and Advanced NLP.',
-      'Located in Dublin, Ireland.'
+      'Focus areas: Machine Learning, Deep Learning, Data Mining, and Natural Language Processing..',
+      'Based in Dublin, Ireland.'
     ],
     type: 'education'
   },
