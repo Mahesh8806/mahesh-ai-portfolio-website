@@ -62,7 +62,7 @@ const Hero: React.FC = () => {
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </a>
               <a 
-                href="./Mahesh%20Bunage%20AI%20Resume.pdf" 
+                href="./Mahesh-Bunage-AI-Resume.pdf" 
                 target="_blank"
                 rel="noopener noreferrer"
                 className="px-8 py-3.5 rounded-full border border-slate-300 text-slate-700 hover:bg-slate-100 dark:border-slate-700 dark:text-white dark:hover:bg-slate-800 font-semibold transition-colors flex items-center gap-2"

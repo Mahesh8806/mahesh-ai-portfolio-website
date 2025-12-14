@@ -61,10 +61,10 @@ export const PROJECTS: Project[] = [
     category: 'Big Data'
   },
   {
-    title: 'Predictive Analytics Models',
-    summary: 'Developed classification and regression models for business insights using Scikit-Learn and historical data analysis.',
-    techStack: ['Python', 'Scikit-Learn', 'Pandas', 'Matplotlib'],
-    repoLink: 'https://github.com/Mahesh8806',
+    title: 'Customer Churn Prediction',
+    summary: 'Built an end-to-end machine learning project in Python to predict customer churn using Logistic Regression and Random Forest, including data preprocessing, model optimization, and business insight generation.',
+    techStack: ['Python', 'Scikit-Learn', 'Pandas', 'NumPy', 'Matplotlib', 'Seaborn', 'Jupyter Notebook', 'Git', 'GitHub'],
+    repoLink: 'https://github.com/Mahesh8806/ML-Project2-ML-Project2-Customer-Churn-Prediction',
     category: 'ML'
   }
 ];

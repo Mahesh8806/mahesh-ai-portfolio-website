@@ -24,7 +24,7 @@ const Contact: React.FC = () => {
 
     try {
       // Connects to backend API
-      const response = await fetch('https://maheshbuange.com/api/contact.php', {
+      const response = await fetch('https://maheshbunage.com/api/contact.php', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
