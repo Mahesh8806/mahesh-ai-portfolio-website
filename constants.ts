@@ -40,11 +40,11 @@ export const PROJECTS: Project[] = [
     category: 'GenAI'
   },
   {
-    title: 'CCPA Data Compliance Pipeline',
-    summary: 'Scalable data processing pipeline on AWS EMR using PySpark to handle search, delete, and anonymization requests for CCPA compliance.',
-    techStack: ['PySpark', 'AWS EMR', 'Airflow', 'DynamoDB', 'Terraform'],
-    repoLink: 'https://github.com/Mahesh8806',
-    category: 'Data Eng'
+    title: 'Road Collision Severity Prediction',
+    summary: 'Built an end-to-end machine learning pipeline to predict road collision severity using UK accident, weather, and population data, including data engineering, model training, class imbalance handling, and explainability with SHAP.',
+    techStack: ['Python', 'Scikit-Learn', 'XGBoost', 'PostgreSQL', 'SHAP'],
+    repoLink: 'https://github.com/Mahesh8806/ML-Project3-road-collision-severity-prediction',
+    category: 'ML'
   },
   {
     title: 'S3 Storage Cost Optimization',
