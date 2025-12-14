@@ -47,6 +47,13 @@ export const PROJECTS: Project[] = [
     category: 'ML'
   },
   {
+    title: 'Customer Churn Prediction',
+    summary: 'Built an end-to-end machine learning project in Python to predict customer churn using Logistic Regression and Random Forest, including data preprocessing, model optimization, and business insight generation.',
+    techStack: ['Python', 'Scikit-Learn', 'Pandas', 'NumPy', 'Matplotlib', 'Seaborn', 'Jupyter Notebook', 'Git', 'GitHub'],
+    repoLink: 'https://github.com/Mahesh8806/ML-Project2-ML-Project2-Customer-Churn-Prediction',
+    category: 'ML'
+  },
+  {
     title: 'S3 Storage Cost Optimization',
     summary: 'Automated storage analysis pipeline using AWS S3 Select and Python to generate weekly cost-optimization reports via email.',
     techStack: ['Python', 'AWS S3', 'Airflow', 'AWS SES', 'Pandas'],
@@ -59,13 +66,6 @@ export const PROJECTS: Project[] = [
     techStack: ['Spark', 'HBase', 'Hive', 'AWS RDS', 'Linux'],
     repoLink: 'https://github.com/Mahesh8806',
     category: 'Big Data'
-  },
-  {
-    title: 'Customer Churn Prediction',
-    summary: 'Built an end-to-end machine learning project in Python to predict customer churn using Logistic Regression and Random Forest, including data preprocessing, model optimization, and business insight generation.',
-    techStack: ['Python', 'Scikit-Learn', 'Pandas', 'NumPy', 'Matplotlib', 'Seaborn', 'Jupyter Notebook', 'Git', 'GitHub'],
-    repoLink: 'https://github.com/Mahesh8806/ML-Project2-ML-Project2-Customer-Churn-Prediction',
-    category: 'ML'
   }
 ];
 
