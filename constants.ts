@@ -42,7 +42,7 @@ export const PROJECTS: Project[] = [
   {
     title: 'Dublin Bikes Availability Prediction',
     summary: 'Predicts Dublin Bikes station availability (LOW/MEDIUM/HIGH) using historical data and machine learning models.',
-    techStack: ['Python', 'Scikit-Learn (Random Forest, MLP, K-Means)', 'Pandas', 'NumPy', 'Matplotlib', 'Seaborn', 'Jupyter Notebook', 'Git'],
+    techStack: ['Python', 'Scikit-Learn', 'Pandas', 'NumPy', 'Matplotlib', 'Seaborn', 'Jupyter Notebook', 'Git'],
     repoLink:'https://github.com/Mahesh8806/ML-Project1-Dublin-Bikes-Availability-Prediction',
     category: 'ML'
   },
