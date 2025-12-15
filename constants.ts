@@ -40,17 +40,24 @@ export const PROJECTS: Project[] = [
     category: 'GenAI'
   },
   {
-    title: 'Road Collision Severity Prediction',
-    summary: 'Built an end-to-end machine learning pipeline to predict road collision severity using UK accident, weather, and population data, including data engineering, model training, class imbalance handling, and explainability with SHAP.',
-    techStack: ['Python', 'Scikit-Learn', 'XGBoost', 'PostgreSQL', 'SHAP'],
-    repoLink: 'https://github.com/Mahesh8806/ML-Project3-road-collision-severity-prediction',
+    title: 'Dublin Bikes Availability Prediction',
+    summary: 'Predicts Dublin Bikes station availability (LOW/MEDIUM/HIGH) using historical data and machine learning models.',
+    techStack: ['Python', 'Scikit-Learn (Random Forest, MLP, K-Means)', 'Pandas', 'NumPy', 'Matplotlib', 'Seaborn', 'Jupyter Notebook', 'Git'],
+    repoLink:'https://github.com/Mahesh8806/ML-Project1-Dublin-Bikes-Availability-Prediction',
     category: 'ML'
   },
   {
     title: 'Customer Churn Prediction',
     summary: 'Built an end-to-end machine learning project in Python to predict customer churn using Logistic Regression and Random Forest, including data preprocessing, model optimization, and business insight generation.',
-    techStack: ['Python', 'Scikit-Learn', 'Pandas', 'NumPy', 'Matplotlib', 'Seaborn', 'Jupyter Notebook', 'Git', 'GitHub'],
+    techStack: ['Python', 'Scikit-Learn', 'Pandas', 'NumPy', 'Matplotlib', 'Seaborn', 'Jupyter Notebook', 'Git'],
     repoLink: 'https://github.com/Mahesh8806/ML-Project2-ML-Project2-Customer-Churn-Prediction',
+    category: 'ML'
+  },
+  {
+    title: 'Road Collision Severity Prediction',
+    summary: 'Built an end-to-end machine learning pipeline to predict road collision severity using UK accident, weather, and population data, including data engineering, model training, class imbalance handling, and explainability with SHAP.',
+    techStack: ['Python', 'Scikit-Learn', 'XGBoost', 'PostgreSQL', 'SHAP'],
+    repoLink: 'https://github.com/Mahesh8806/ML-Project3-road-collision-severity-prediction',
     category: 'ML'
   },
   {
