@@ -74,7 +74,7 @@ const Hero: React.FC = () => {
 
             <div className="mt-10 flex items-center gap-6 justify-center md:justify-start text-slate-500 dark:text-slate-500">
               <a href="https://github.com/Mahesh8806" target="_blank" rel="noreferrer" className="hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors"><Github className="w-6 h-6" /></a>
-              <a href="https://www.linkedin.com/in/mahesh-bunage-541988217?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" rel="noreferrer" className="hover:text-blue-600 dark:hover:text-blue-500 transition-colors"><Linkedin className="w-6 h-6" /></a>
+              <a href="https://linkedin.com/in/maheshbunage" target="_blank" rel="noreferrer" className="hover:text-blue-600 dark:hover:text-blue-500 transition-colors"><Linkedin className="w-6 h-6" /></a>
               <a href="mailto:mahesh.bunage21@gmail.com" className="hover:text-purple-600 dark:hover:text-purple-500 transition-colors"><Mail className="w-6 h-6" /></a>
             </div>
           </motion.div>
