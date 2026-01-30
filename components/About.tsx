@@ -11,7 +11,7 @@ const About: React.FC = () => {
   const handleImageError = () => {
     // If the local file fails, try the Google User Content link which is often more reliable
     if (imgSrc === 'my-photo.jpg') {
-      setImgSrc('https://lh3.googleusercontent.com/d/1hFhDBepB9RAE5HU9c4E3t4DUD4gXZf3O'); //'https://lh3.googleusercontent.com/d/1tbJT-wIx4hFew2h0v0VTkpXVmX4SShaO'
+      setImgSrc('https://lh3.googleusercontent.com/d/1z2xECwQ5WZeUcJjMVfRxhPrNtasHZxHc'); //'https://lh3.googleusercontent.com/d/1tbJT-wIx4hFew2h0v0VTkpXVmX4SShaO'
     } else {
       // If cloud link also fails, show the fallback UI
       setHasError(true);
