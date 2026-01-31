@@ -1,9 +1,10 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { BrainCircuit, Database, Code2, Cloud } from 'lucide-react';
+import { BrainCircuit, Database, Code2, Cloud, Cpu } from 'lucide-react';
 import { SKILLS } from '../constants.ts';
 
 const iconMap: Record<string, React.ReactNode> = {
+  Cpu: <Cpu className="w-8 h-8" />,
   BrainCircuit: <BrainCircuit className="w-8 h-8" />,
   Database: <Database className="w-8 h-8" />,
   Code2: <Code2 className="w-8 h-8" />,

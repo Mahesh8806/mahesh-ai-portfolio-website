@@ -9,10 +9,35 @@ export const NAV_LINKS = [
 ];
 
 export const SKILLS: SkillCategory[] = [
+  // {
+  //   title: 'Generative AI & ML',
+  //   iconName: 'BrainCircuit',
+  //   skills: ['RAG Architecture', 'LangChain', 'LLMs (GPT/Gemini)', 'Vector DB (Milvus)', 'NLP (NLTK/Spacy)', 
+  //     'Machine Learning (Regression, Classification, Clustering)', 'Deep Learning (CNN/ANN)','Model Evaluation & Optimization']
+  // },
   {
-    title: 'Generative AI & ML',
+    title: 'Generative AI',
     iconName: 'BrainCircuit',
-    skills: ['RAG Architecture', 'LangChain', 'LLMs (GPT/Gemini)', 'Vector DB (Milvus)', 'NLP (NLTK/Spacy)', 'Deep Learning (CNN/ANN)']
+    skills: [
+      'RAG Architecture',
+      'LangChain',
+      'LLMs (GPT / Gemini / LLaMA)',
+      'Vector DB (Milvus / FAISS)',
+      'Knowledge Base Development'
+    ]
+  },
+  {
+    title: 'Machine Learning & NLP',
+    iconName: 'Cpu',
+    skills: [
+      'Regression & Classification',
+      'Clustering Algorithms',
+      'Deep Learning (CNN / ANN)',
+      'Model Evaluation & Optimization',
+      'NLTK / SpaCy',
+      'TF-IDF / Word2Vec',
+      'Keyphrase Extraction'
+    ]
   },
   {
     title: 'Data Engineering',
