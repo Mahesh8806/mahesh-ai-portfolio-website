@@ -1,26 +1,38 @@
-import React from 'react';
+import React, { Suspense, lazy } from 'react';
 import Navbar from './components/Navbar.tsx';
 import Hero from './components/Hero.tsx';
-import About from './components/About.tsx';
-import Skills from './components/Skills.tsx';
-import Projects from './components/Projects.tsx';
-import Experience from './components/Experience.tsx';
-import Contact from './components/Contact.tsx';
-import Footer from './components/Footer.tsx';
+
+// Everything below the hero loads in a separate chunk, so the first screen
+// renders without waiting for the rest of the page's code.
+const About = lazy(() => import('./components/About.tsx'));
+const Skills = lazy(() => import('./components/Skills.tsx'));
+const Experience = lazy(() => import('./components/Experience.tsx'));
+const Approach = lazy(() => import('./components/Approach.tsx'));
+const Projects = lazy(() => import('./components/Projects.tsx'));
+const Education = lazy(() => import('./components/Education.tsx'));
+const Contact = lazy(() => import('./components/Contact.tsx'));
+const Footer = lazy(() => import('./components/Footer.tsx'));
 
 function App() {
   return (
-    <div className="antialiased bg-white dark:bg-black text-slate-900 dark:text-white min-h-screen">
+    <div className="antialiased bg-white dark:bg-transparent text-slate-900 dark:text-white min-h-screen relative">
+      <div className="hidden dark:block fixed inset-0 -z-10 cosmic-bg"></div>
       <Navbar />
       <main>
         <Hero />
-        <About />
-        <Skills />
-        <Projects />
-        <Experience />
-        <Contact />
+        <Suspense fallback={<div className="min-h-screen" />}>
+          <About />
+          <Skills />
+          <Experience />
+          <Approach />
+          <Projects />
+          <Education />
+          <Contact />
+        </Suspense>
       </main>
-      <Footer />
+      <Suspense fallback={null}>
+        <Footer />
+      </Suspense>
     </div>
   );
 }
