@@ -38,11 +38,27 @@ jobs:
           test -f dist/Mahesh-Bunage-Resume.pdf
 
       - name: Publish dist/ to the deploy branch
+        # Adds a normal commit on top of the existing deploy branch (no force
+        # push): the repo blocks force pushes, and Hostinger pulls this branch.
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          cd dist
-          git init -q -b deploy
+          REMOTE="https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+          if git ls-remote --exit-code --heads "$REMOTE" deploy >/dev/null; then
+            git clone -q --depth 1 --branch deploy "$REMOTE" publish
+          else
+            mkdir publish && git -C publish init -q -b deploy
+          fi
+          # Replace everything except .git with the fresh build.
+          find publish -mindepth 1 -maxdepth 1 ! -name .git -exec rm -rf {} +
+          cp -a dist/. publish/
+          cd publish
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add -A
+          if git diff --cached --quiet; then
+            echo "Build output unchanged; nothing to publish."
+            exit 0
+          fi
           git commit -q -m "Build ${GITHUB_SHA::7} from master"
-          git push -f "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${GITHUB_REPOSITORY}.git" deploy
+          git push -q "$REMOTE" HEAD:deploy
