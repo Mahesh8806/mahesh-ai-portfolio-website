@@ -59,7 +59,7 @@ const Contact: React.FC = () => {
   };
 
   return (
-    <section id="contact" className="py-24 bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-white transition-colors duration-300">
+    <section id="contact" className="py-24 bg-slate-50 dark:bg-transparent text-slate-900 dark:text-white transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-6">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">
@@ -67,7 +67,7 @@ const Contact: React.FC = () => {
             <h3 className="text-3xl md:text-4xl font-bold">Let's Discuss AI Solutions</h3>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-12 bg-white dark:bg-[#0f0f0f] rounded-3xl p-8 md:p-12 shadow-xl border border-slate-200 dark:border-slate-800">
+          <div className="grid md:grid-cols-2 gap-12 bg-white dark:bg-slate-900/40 dark:backdrop-blur-xl rounded-3xl p-8 md:p-12 shadow-xl border border-slate-200 dark:border-slate-700/50">
             <div>
                <h4 className="text-2xl font-bold mb-6">Contact Information</h4>
                <p className="text-slate-500 mb-8 leading-relaxed">
@@ -86,17 +86,17 @@ const Contact: React.FC = () => {
                  </div>
 
                  <div className="flex items-center gap-4">
-                   <div className="w-12 h-12 rounded-full bg-blue-500/10 flex items-center justify-center text-blue-500">
+                   <div className="w-12 h-12 rounded-full bg-slate-500/10 flex items-center justify-center text-slate-500 dark:text-slate-400">
                      <Phone className="w-5 h-5" />
                    </div>
                    <div>
                      <p className="text-xs text-slate-500 uppercase font-semibold">Phone</p>
-                     <p>+353 894670746</p>
+                     <p>+353 89 467 0746</p>
                    </div>
                  </div>
-                 
+
                  <div className="flex items-center gap-4">
-                   <div className="w-12 h-12 rounded-full bg-purple-500/10 flex items-center justify-center text-purple-500">
+                   <div className="w-12 h-12 rounded-full bg-slate-500/10 flex items-center justify-center text-slate-500 dark:text-slate-400">
                      <MapPin className="w-5 h-5" />
                    </div>
                    <div>
@@ -118,7 +118,7 @@ const Contact: React.FC = () => {
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 rounded-lg bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 outline-none transition-all"
+                    className="w-full px-4 py-3 rounded-lg bg-slate-50 dark:bg-slate-900/40 dark:backdrop-blur-sm border border-slate-200 dark:border-slate-700/50 focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 outline-none transition-all"
                     placeholder="Recruiter / Client Name"
                   />
                 </div>
@@ -131,7 +131,7 @@ const Contact: React.FC = () => {
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 rounded-lg bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 outline-none transition-all"
+                    className="w-full px-4 py-3 rounded-lg bg-slate-50 dark:bg-slate-900/40 dark:backdrop-blur-sm border border-slate-200 dark:border-slate-700/50 focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 outline-none transition-all"
                     placeholder="email@company.com"
                   />
                 </div>
@@ -144,7 +144,7 @@ const Contact: React.FC = () => {
                     onChange={handleChange}
                     required
                     rows={4}
-                    className="w-full px-4 py-3 rounded-lg bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 outline-none transition-all resize-none"
+                    className="w-full px-4 py-3 rounded-lg bg-slate-50 dark:bg-slate-900/40 dark:backdrop-blur-sm border border-slate-200 dark:border-slate-700/50 focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 outline-none transition-all resize-none"
                     placeholder="I'm interested in your profile..."
                   />
                 </div>
@@ -152,10 +152,10 @@ const Contact: React.FC = () => {
                 <button 
                   type="submit"
                   disabled={status === 'loading' || status === 'success'}
-                  className={`w-full py-3.5 rounded-lg font-bold transition-all flex items-center justify-center gap-2 ${
-                    status === 'success' 
-                      ? 'bg-green-500 text-white' 
-                      : 'bg-gradient-to-r from-cyan-500 to-blue-600 text-white hover:shadow-lg hover:shadow-cyan-500/25'
+                  className={`w-full py-3.5 rounded-lg font-bold transition-colors flex items-center justify-center gap-2 ${
+                    status === 'success'
+                      ? 'bg-green-500 text-white'
+                      : 'bg-cyan-500 hover:bg-cyan-600 text-white'
                   }`}
                 >
                   {status === 'loading' ? (
