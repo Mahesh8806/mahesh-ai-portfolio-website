@@ -1,0 +1,47 @@
+name: Build site
+
+# Builds the site on every push to master and publishes the built files
+# (dist/) to the `deploy` branch. Hostinger's Git auto-deploy watches that
+# branch and copies it into public_html, so a merge to master goes live.
+
+on:
+  push:
+    branches: [master]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: deploy
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+      - run: npm run build
+
+      - name: Check the build output
+        run: |
+          test -f dist/index.html
+          test -f dist/api/contact.php
+          test -f dist/.htaccess
+
+      - name: Publish dist/ to the deploy branch
+        run: |
+          cd dist
+          git init -q -b deploy
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -q -m "Build ${GITHUB_SHA::7} from master"
+          git push -f "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${GITHUB_REPOSITORY}.git" deploy

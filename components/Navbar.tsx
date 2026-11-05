@@ -60,12 +60,21 @@ const Navbar: React.FC = () => {
   useEffect(() => {
     const hash = window.location.hash.replace('#', '');
     if (!hash) return;
-    const element = document.getElementById(hash);
-    if (element) {
-      const offset = 80;
-      const elementPosition = element.getBoundingClientRect().top + window.scrollY;
-      window.scrollTo({ top: elementPosition - offset, behavior: 'auto' });
-    }
+    // Sections below the hero load lazily, so wait for the target to exist.
+    let frame = 0;
+    const started = performance.now();
+    const tryScroll = () => {
+      const element = document.getElementById(hash);
+      if (element) {
+        const offset = 80;
+        const elementPosition = element.getBoundingClientRect().top + window.scrollY;
+        window.scrollTo({ top: elementPosition - offset, behavior: 'auto' });
+      } else if (performance.now() - started < 3000) {
+        frame = requestAnimationFrame(tryScroll);
+      }
+    };
+    tryScroll();
+    return () => cancelAnimationFrame(frame);
   }, []);
 
   return (
