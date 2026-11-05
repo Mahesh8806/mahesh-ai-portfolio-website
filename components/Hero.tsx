@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, Download, Github, Linkedin, Mail, Database, Workflow, Cpu, Server, BarChart3 } from 'lucide-react';
+import DataFlowBackground from './DataFlowBackground.tsx';
 
 const PIPELINE_NODES = [
   { icon: Database, label: 'S3' },
@@ -30,6 +31,11 @@ const Hero: React.FC = () => {
   return (
     <section className="relative min-h-screen flex items-center justify-center pt-16 overflow-hidden bg-slate-50 dark:bg-transparent transition-colors duration-300">
       <div className="absolute inset-0 z-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-white via-slate-100 to-slate-200 dark:from-transparent dark:via-transparent dark:to-transparent"></div>
+      {/* Animated AI data flow: pipeline stages + neural-net style packets.
+          Masked so it fades out behind the headline and keeps text readable. */}
+      <div className="data-flow-mask absolute inset-0 z-0 pointer-events-none">
+        <DataFlowBackground />
+      </div>
 
       <div className="max-w-7xl mx-auto px-6 z-10 relative w-full">
         <div className="flex flex-col md:flex-row items-center justify-between gap-12">

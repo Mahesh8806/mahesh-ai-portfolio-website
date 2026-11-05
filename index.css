@@ -32,6 +32,20 @@ body {
   background-size: 180px 180px, 220px 220px, 260px 260px, 200px 200px, 240px 240px, 190px 190px, 100% 100%, 100% 100%, 100% 100%;
 }
 
+/* Hero "AI data flow" background: fade the network out behind the
+   headline so text stays readable. Mobile stacks content in the
+   centre, so only the side edges show the network there. */
+.data-flow-mask {
+  -webkit-mask-image: linear-gradient(to right, #000 0%, rgba(0,0,0,0.25) 20%, transparent 32%, transparent 68%, rgba(0,0,0,0.25) 80%, #000 100%);
+  mask-image: linear-gradient(to right, #000 0%, rgba(0,0,0,0.25) 20%, transparent 32%, transparent 68%, rgba(0,0,0,0.25) 80%, #000 100%);
+}
+@media (min-width: 768px) {
+  .data-flow-mask {
+    -webkit-mask-image: radial-gradient(ellipse 45% 55% at 28% 50%, transparent 0%, rgba(0,0,0,0.35) 55%, #000 100%);
+    mask-image: radial-gradient(ellipse 45% 55% at 28% 50%, transparent 0%, rgba(0,0,0,0.35) 55%, #000 100%);
+  }
+}
+
 /* Custom scrollbar for webkit */
 ::-webkit-scrollbar {
   width: 8px;
