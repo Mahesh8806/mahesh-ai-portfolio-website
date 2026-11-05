@@ -35,6 +35,7 @@ jobs:
           test -f dist/index.html
           test -f dist/api/contact.php
           test -f dist/.htaccess
+          test -f dist/Mahesh-Bunage-Resume.pdf
 
       - name: Publish dist/ to the deploy branch
         run: |
