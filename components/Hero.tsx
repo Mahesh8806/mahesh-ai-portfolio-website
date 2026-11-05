@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, Download, Github, Linkedin, Mail } from 'lucide-react';
+import DataFlowBackground from './DataFlowBackground.tsx';
 
 const Hero: React.FC = () => {
   const handleScrollToProjects = (e: React.MouseEvent<HTMLAnchorElement>) => {
@@ -25,8 +26,13 @@ const Hero: React.FC = () => {
       {/* Background Abstract Elements */}
       <div className="absolute inset-0 z-0">
          <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-white via-slate-100 to-slate-200 dark:from-slate-900 dark:via-[#0a0a0a] dark:to-black"></div>
-         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-cyan-500/20 dark:bg-cyan-500/10 rounded-full blur-3xl animate-pulse"></div>
-         <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/20 dark:bg-purple-500/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
+         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-cyan-500/20 dark:bg-cyan-500/10 rounded-full blur-3xl motion-safe:animate-pulse"></div>
+         <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/20 dark:bg-purple-500/10 rounded-full blur-3xl motion-safe:animate-pulse" style={{ animationDelay: '1s' }}></div>
+         {/* Animated AI data flow: pipeline stages + neural-net style packets.
+             Masked so it fades out behind the headline and keeps text readable. */}
+         <div className="data-flow-mask absolute inset-0">
+           <DataFlowBackground />
+         </div>
       </div>
 
       <div className="max-w-7xl mx-auto px-6 z-10 relative w-full">
