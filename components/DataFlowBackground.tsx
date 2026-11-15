@@ -22,18 +22,18 @@ const STAGES = ['ingest', 'transform', 'embed', 'retrieve', 'generate'];
 
 const PALETTE = {
   dark: {
-    edge: 'rgba(148, 163, 184, 0.10)',
-    node: 'rgba(148, 163, 184, 0.35)',
-    nodeCore: 'rgba(226, 232, 240, 0.85)',
-    packet: ['34, 211, 238', '168, 85, 247'], // cyan-400, purple-500
+    edge: 'rgba(160, 166, 180, 0.09)',
+    node: 'rgba(160, 166, 180, 0.22)',
+    nodeCore: 'rgba(237, 237, 239, 0.8)',
+    packet: ['139, 151, 255', '94, 234, 212'], // accent indigo, signal teal
     grid: 'rgba(148, 163, 184, 0.05)',
     label: 'rgba(148, 163, 184, 0.35)',
   },
   light: {
-    edge: 'rgba(71, 85, 105, 0.12)',
-    node: 'rgba(71, 85, 105, 0.30)',
-    nodeCore: 'rgba(51, 65, 85, 0.75)',
-    packet: ['8, 145, 178', '147, 51, 234'], // cyan-600, purple-600
+    edge: 'rgba(15, 17, 21, 0.10)',
+    node: 'rgba(15, 17, 21, 0.16)',
+    nodeCore: 'rgba(15, 17, 21, 0.6)',
+    packet: ['79, 91, 213', '13, 148, 136'], // accent indigo, signal teal
     grid: 'rgba(71, 85, 105, 0.06)',
     label: 'rgba(71, 85, 105, 0.45)',
   },
@@ -147,14 +147,7 @@ const DataFlowBackground: React.FC<{ className?: string }> = ({ className = '' }
       const p = isDark ? PALETTE.dark : PALETTE.light;
       ctx.clearRect(0, 0, width, height);
 
-      // Faint dot grid for a "blueprint" feel.
-      ctx.fillStyle = p.grid;
-      const step = 32;
-      for (let gx = step / 2; gx < width; gx += step) {
-        for (let gy = step / 2; gy < height; gy += step) {
-          ctx.fillRect(gx, gy, 1, 1);
-        }
-      }
+      // (The blueprint grid is drawn in CSS behind the canvas.)
 
       // Edges.
       ctx.lineWidth = 1;

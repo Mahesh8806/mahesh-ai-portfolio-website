@@ -2,64 +2,396 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
-@theme {
-  --font-sans: "Inter", sans-serif;
-  --font-mono: "JetBrains Mono", monospace;
-
-  --color-cyan-400: #22d3ee;
-  --color-cyan-500: #06b6d4;
-  --color-purple-500: #a855f7;
-  --color-purple-600: #9333ea;
+/* ------------------------------------------------------------------
+   Design tokens
+   Every colour in the UI comes from these variables, so light and dark
+   themes are one swap. Dark is the primary experience.
+   ------------------------------------------------------------------ */
+:root {
+  --bg: #f7f7f5;
+  --bg-elev: #ffffff;
+  --surface: rgba(15, 17, 21, 0.025);
+  --surface-2: rgba(15, 17, 21, 0.05);
+  --line: rgba(15, 17, 21, 0.08);
+  --line-strong: rgba(15, 17, 21, 0.16);
+  --fg: #0f1115;
+  --fg-2: #3b3f47;
+  --muted: #646a74;
+  --subtle: #8b9099;
+  --accent: #4f5bd5;
+  --accent-fg: #ffffff;
+  --accent-soft: rgba(79, 91, 213, 0.1);
+  --signal: #0d9488;
+  --glow: rgba(79, 91, 213, 0.12);
+  --shadow: 0 1px 2px rgba(15, 17, 21, 0.04), 0 8px 24px -8px rgba(15, 17, 21, 0.08);
+  color-scheme: light;
 }
 
-body {
-  font-family: var(--font-sans);
+.dark {
+  --bg: #07080a;
+  --bg-elev: #0d0e11;
+  --surface: rgba(255, 255, 255, 0.025);
+  --surface-2: rgba(255, 255, 255, 0.05);
+  --line: rgba(255, 255, 255, 0.07);
+  --line-strong: rgba(255, 255, 255, 0.14);
+  --fg: #ededef;
+  --fg-2: #c4c6cc;
+  --muted: #8a8f98;
+  --subtle: #5d626b;
+  --accent: #8b97ff;
+  --accent-fg: #07080a;
+  --accent-soft: rgba(139, 151, 255, 0.1);
+  --signal: #5eead4;
+  --glow: rgba(139, 151, 255, 0.16);
+  --shadow: 0 1px 0 rgba(255, 255, 255, 0.03) inset, 0 20px 40px -20px rgba(0, 0, 0, 0.8);
+  color-scheme: dark;
 }
 
-.cosmic-bg {
-  background-color: #05070f;
-  background-image:
-    radial-gradient(1px 1px at 10% 15%, rgba(255, 255, 255, 0.6) 1px, transparent 0),
-    radial-gradient(1px 1px at 75% 35%, rgba(255, 255, 255, 0.45) 1px, transparent 0),
-    radial-gradient(1.5px 1.5px at 40% 70%, rgba(255, 255, 255, 0.4) 1px, transparent 0),
-    radial-gradient(1px 1px at 92% 80%, rgba(255, 255, 255, 0.45) 1px, transparent 0),
-    radial-gradient(1px 1px at 25% 90%, rgba(255, 255, 255, 0.35) 1px, transparent 0),
-    radial-gradient(1.5px 1.5px at 60% 10%, rgba(255, 255, 255, 0.4) 1px, transparent 0),
-    radial-gradient(ellipse 70% 45% at 50% 0%, rgba(6, 182, 212, 0.16), transparent 60%),
-    radial-gradient(ellipse 55% 40% at 95% 25%, rgba(59, 130, 246, 0.12), transparent 60%),
-    radial-gradient(ellipse 60% 45% at 5% 75%, rgba(6, 182, 212, 0.08), transparent 60%);
-  background-repeat: repeat, repeat, repeat, repeat, repeat, repeat, no-repeat, no-repeat, no-repeat;
-  background-size: 180px 180px, 220px 220px, 260px 260px, 200px 200px, 240px 240px, 190px 190px, 100% 100%, 100% 100%, 100% 100%;
+@theme inline {
+  --font-sans: "Geist", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "Geist Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  --font-serif: "Instrument Serif", ui-serif, Georgia, serif;
+
+  --color-bg: var(--bg);
+  --color-elev: var(--bg-elev);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-fg: var(--fg);
+  --color-fg-2: var(--fg-2);
+  --color-muted: var(--muted);
+  --color-subtle: var(--subtle);
+  --color-accent: var(--accent);
+  --color-accent-fg: var(--accent-fg);
+  --color-accent-soft: var(--accent-soft);
+  --color-signal: var(--signal);
 }
 
-/* Hero "AI data flow" background: fade the network out behind the
-   headline so text stays readable. Mobile stacks content in the
-   centre, so only the side edges show the network there. */
-.data-flow-mask {
-  -webkit-mask-image: linear-gradient(to right, #000 0%, rgba(0,0,0,0.25) 20%, transparent 32%, transparent 68%, rgba(0,0,0,0.25) 80%, #000 100%);
-  mask-image: linear-gradient(to right, #000 0%, rgba(0,0,0,0.25) 20%, transparent 32%, transparent 68%, rgba(0,0,0,0.25) 80%, #000 100%);
+/* ------------------------------------------------------------------
+   Base
+   ------------------------------------------------------------------ */
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
 }
-@media (min-width: 768px) {
-  .data-flow-mask {
-    -webkit-mask-image: radial-gradient(ellipse 45% 55% at 28% 50%, transparent 0%, rgba(0,0,0,0.35) 55%, #000 100%);
-    mask-image: radial-gradient(ellipse 45% 55% at 28% 50%, transparent 0%, rgba(0,0,0,0.35) 55%, #000 100%);
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
   }
 }
 
-/* Custom scrollbar for webkit */
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-sans);
+  font-feature-settings: "ss01", "cv11";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--accent-fg);
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+/* ------------------------------------------------------------------
+   Atmosphere: one soft light from the top, a faint grid, nothing loud.
+   ------------------------------------------------------------------ */
+.atmosphere {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 80% 50% at 50% -10%, var(--glow), transparent 60%),
+    radial-gradient(ellipse 40% 35% at 100% 30%, rgba(94, 234, 212, 0.035), transparent 70%),
+    var(--bg);
+}
+
+.grid-lines {
+  background-image:
+    linear-gradient(to right, var(--line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--line) 1px, transparent 1px);
+  background-size: 64px 64px;
+  -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, #000 20%, transparent 75%);
+  mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, #000 20%, transparent 75%);
+}
+
+/* Hero data-flow canvas fades out behind the headline. */
+.data-flow-mask {
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 35%, #000 60%, transparent 100%);
+  mask-image: linear-gradient(to bottom, transparent 0%, #000 35%, #000 60%, transparent 100%);
+}
+@media (min-width: 1024px) {
+  .data-flow-mask {
+    -webkit-mask-image: radial-gradient(ellipse 50% 60% at 30% 50%, transparent 0%, rgba(0, 0, 0, 0.3) 55%, #000 100%);
+    mask-image: radial-gradient(ellipse 50% 60% at 30% 50%, transparent 0%, rgba(0, 0, 0, 0.3) 55%, #000 100%);
+  }
+}
+
+/* ------------------------------------------------------------------
+   Components
+   ------------------------------------------------------------------ */
+.container-x {
+  width: 100%;
+  max-width: 1200px;
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+}
+@media (min-width: 640px) {
+  .container-x {
+    padding-inline: 2rem;
+  }
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.eyebrow::before {
+  content: "";
+  width: 1.25rem;
+  height: 1px;
+  background: var(--accent);
+}
+
+.display {
+  font-weight: 600;
+  letter-spacing: -0.035em;
+  line-height: 1.02;
+}
+
+.serif-accent {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+
+/* Card with a cursor-following spotlight on its border and surface.
+   JS sets --mx/--my (see useSpotlight). */
+.card {
+  position: relative;
+  border-radius: 20px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+  isolation: isolate;
+  transition: border-color 0.3s ease, transform 0.3s ease, background-color 0.3s ease;
+}
+.card-solid {
+  background: var(--bg-elev);
+}
+.spotlight::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1px;
+  background: radial-gradient(320px circle at var(--mx, 50%) var(--my, 50%), var(--accent), transparent 45%);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  pointer-events: none;
+  z-index: 1;
+}
+.spotlight::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(420px circle at var(--mx, 50%) var(--my, 50%), var(--accent-soft), transparent 50%);
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  pointer-events: none;
+  z-index: -1;
+}
+@media (hover: hover) {
+  .spotlight:hover::before {
+    opacity: 0.55;
+  }
+  .spotlight:hover::after {
+    opacity: 1;
+  }
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.28rem 0.6rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  line-height: 1.2;
+  color: var(--fg-2);
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  white-space: nowrap;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  height: 2.9rem;
+  padding-inline: 1.3rem;
+  border-radius: 999px;
+  font-size: 0.925rem;
+  font-weight: 500;
+  white-space: nowrap;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+.btn:active {
+  transform: scale(0.98);
+}
+.btn-primary {
+  background: var(--fg);
+  color: var(--bg);
+  box-shadow: 0 0 0 1px var(--line-strong), 0 8px 30px -10px var(--glow);
+}
+.btn-primary:hover {
+  background: var(--fg-2);
+}
+.btn-ghost {
+  color: var(--fg);
+  background: var(--surface);
+  border: 1px solid var(--line-strong);
+}
+.btn-ghost:hover {
+  background: var(--surface-2);
+  border-color: var(--subtle);
+}
+.btn-link {
+  height: auto;
+  padding: 0;
+  color: var(--muted);
+}
+.btn-link:hover {
+  color: var(--fg);
+}
+
+.kbd {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  padding: 0.1rem 0.35rem;
+  border-radius: 5px;
+  border: 1px solid var(--line-strong);
+  color: var(--muted);
+  background: var(--surface);
+}
+
+.field {
+  width: 100%;
+  padding: 0.8rem 0.95rem;
+  border-radius: 12px;
+  background: var(--surface);
+  border: 1px solid var(--line-strong);
+  color: var(--fg);
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+.field::placeholder {
+  color: var(--subtle);
+}
+.field:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 4px var(--accent-soft);
+}
+.field[aria-invalid="true"] {
+  border-color: #f87171;
+}
+
+/* Rotating hairline border used on the portrait and featured visuals. */
+@property --angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+.orbit-border {
+  position: relative;
+}
+.orbit-border::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1px;
+  background: conic-gradient(from var(--angle), transparent 0deg, var(--accent) 60deg, transparent 120deg, transparent 200deg, var(--signal) 260deg, transparent 320deg);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  animation: orbit 8s linear infinite;
+  pointer-events: none;
+}
+@keyframes orbit {
+  to {
+    --angle: 360deg;
+  }
+}
+
+@keyframes flow-dash {
+  to {
+    stroke-dashoffset: -40;
+  }
+}
+.flow-line {
+  stroke-dasharray: 4 6;
+  animation: flow-dash 1.6s linear infinite;
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.35; }
+}
+.pulse-dot {
+  animation: pulse-dot 2.4s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .orbit-border::before,
+  .flow-line,
+  .pulse-dot {
+    animation: none;
+  }
+}
+
+.no-scrollbar {
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 10px;
 }
-
 ::-webkit-scrollbar-track {
-  background: #0f172a;
+  background: var(--bg);
 }
-
 ::-webkit-scrollbar-thumb {
-  background: #334155;
-  border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #475569;
+  background: var(--line-strong);
+  border-radius: 10px;
+  border: 3px solid var(--bg);
 }

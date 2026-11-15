@@ -1,27 +1,44 @@
+export interface Metric {
+  value: string;
+  label: string;
+}
+
+export type ProjectVisual = 'agent' | 'shield' | 'rag' | 'collision' | 'bikes';
+
 export interface Project {
+  slug: string;
   title: string;
-  summary: string;
+  tagline: string;
+  category: string;
+  featured?: boolean;
+  visual: ProjectVisual;
+  problem: string;
+  solution: string;
   architecture: string[];
   challenge: string;
+  outcomes: Metric[];
   techStack: string[];
   repoLink: string;
   demoLink?: string;
-  category: string;
 }
 
-export interface ApproachStep {
-  stage: string;
-  iconName: string;
-  description: string;
+export interface Workstream {
+  title: string;
+  stack: string[];
+  points: string[];
 }
 
 export interface ExperienceItem {
   role: string;
   company: string;
   companySubtitle?: string;
-  period: string;
+  period?: string;
   location?: string;
-  description: string[];
+  summary: string;
+  highlights?: Metric[];
+  workstreams?: Workstream[];
+  points?: string[];
+  stack: string[];
 }
 
 export interface EducationItem {
@@ -38,6 +55,28 @@ export interface EducationItem {
 
 export interface SkillCategory {
   title: string;
-  skills: string[];
+  blurb: string;
   iconName: string;
+  skills: string[];
+}
+
+export interface ApproachStep {
+  stage: string;
+  description: string;
+}
+
+export interface StoryChapter {
+  index: string;
+  label: string;
+  title: string;
+  body: string;
+}
+
+export interface PipelineStage {
+  id: string;
+  name: string;
+  iconName: string;
+  what: string;
+  tools: string[];
+  where: { label: string; project?: string }[];
 }
