@@ -1,150 +1,167 @@
 import React from 'react';
-import { motion } from 'framer-motion';
-import { ArrowRight, Download, Github, Linkedin, Mail, Database, Workflow, Cpu, Server, BarChart3 } from 'lucide-react';
+import { m } from 'framer-motion';
+import { ArrowRight, Download, Github, Linkedin, Mail, MapPin } from 'lucide-react';
 import DataFlowBackground from './DataFlowBackground.tsx';
+import { HERO_STATS, PROFILE } from '../constants.ts';
+import { anchorClick, EASE } from './ui.tsx';
 
-const PIPELINE_NODES = [
-  { icon: Database, label: 'S3' },
-  { icon: Workflow, label: 'Airflow' },
-  { icon: Cpu, label: 'PySpark' },
-  { icon: Server, label: 'Snowflake' },
-  { icon: BarChart3, label: 'Serving' },
-];
+const rise = (delay: number) => ({
+  initial: { opacity: 0, y: 24 },
+  animate: { opacity: 1, y: 0 },
+  transition: { duration: 0.9, ease: EASE, delay },
+});
 
-const Hero: React.FC = () => {
-  const handleScrollToProjects = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    e.preventDefault();
-    const element = document.getElementById('projects');
-    if (element) {
-      const offset = 80; // Navbar height + breathing room
-      const elementPosition = element.getBoundingClientRect().top + window.scrollY;
-      const offsetPosition = elementPosition - offset;
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
-      });
-      window.history.pushState(null, "", "#projects");
-    }
-  };
-
-  return (
-    <section className="relative min-h-screen flex items-center justify-center pt-16 overflow-hidden bg-slate-50 dark:bg-transparent transition-colors duration-300">
-      <div className="absolute inset-0 z-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-white via-slate-100 to-slate-200 dark:from-transparent dark:via-transparent dark:to-transparent"></div>
-      {/* Animated AI data flow: pipeline stages + neural-net style packets.
-          Masked so it fades out behind the headline and keeps text readable. */}
-      <div className="data-flow-mask absolute inset-0 z-0 pointer-events-none">
-        <DataFlowBackground />
-      </div>
-
-      <div className="max-w-7xl mx-auto px-6 z-10 relative w-full">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-12">
-
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-            className="md:w-1/2 text-center md:text-left"
-          >
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 mb-6 text-xs font-semibold tracking-wide text-cyan-600 dark:text-cyan-400 bg-cyan-500/10 dark:bg-cyan-900/20 rounded-full border border-cyan-500/20 dark:border-cyan-500/30">
-              <span className="w-1.5 h-1.5 rounded-full bg-cyan-500"></span>
-              Stamp 1G · No Visa Sponsorship Required · Open to Roles in Ireland
-            </div>
-            <h1 className="text-5xl md:text-6xl font-bold mb-5 tracking-tight text-slate-900 dark:text-white leading-tight">
-              Data Engineer
-            </h1>
-            <p className="text-xl md:text-2xl font-medium text-cyan-600 dark:text-cyan-400 mb-6">
-              Building AI-ready data platforms
+const Portrait: React.FC = () => (
+  <m.div
+    initial={{ opacity: 0, y: 30, scale: 0.97 }}
+    animate={{ opacity: 1, y: 0, scale: 1 }}
+    transition={{ duration: 1.1, ease: EASE, delay: 0.35 }}
+    className="relative mx-auto w-full max-w-[340px] lg:max-w-[380px]"
+  >
+    <div className="orbit-border rounded-[28px] p-2 bg-surface border border-line">
+      <div className="relative overflow-hidden rounded-[22px] aspect-[4/5] bg-surface-2">
+        <picture>
+          <source srcSet="/my-photo.webp" type="image/webp" />
+          <img
+            src="/my-photo.jpg"
+            alt="Portrait of Mahesh Bunage"
+            width={628}
+            height={848}
+            fetchPriority="high"
+            className="w-full h-full object-cover object-top"
+          />
+        </picture>
+        <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/75 via-black/20 to-transparent" />
+        <div className="absolute left-4 right-4 bottom-4 flex items-end justify-between gap-3 text-white">
+          <div>
+            <p className="text-[15px] font-semibold tracking-tight">{PROFILE.name}</p>
+            <p className="text-[12px] text-white/70 flex items-center gap-1 mt-0.5">
+              <MapPin className="w-3 h-3" /> {PROFILE.location}
             </p>
-            <p className="text-lg text-slate-600 dark:text-slate-400 mb-8 max-w-lg mx-auto md:mx-0 leading-relaxed">
-              2.5+ years building production-scale pipelines with Airflow, PySpark and AWS at Experian (via Caspex Tech).
-              Now pairing that foundation with an MSc in Artificial Intelligence to build RAG systems and AI agents on top of real data.
-            </p>
-
-            <div className="flex flex-col sm:flex-row items-center gap-4 justify-center md:justify-start">
-              <a
-                href="#projects"
-                onClick={handleScrollToProjects}
-                className="px-8 py-3.5 rounded-full bg-slate-900 text-white hover:bg-slate-800 dark:bg-white dark:text-black dark:hover:bg-slate-200 font-semibold transition-colors flex items-center gap-2 group"
-              >
-                View Projects
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </a>
-              <a
-                href="/Mahesh-Bunage-Resume.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-8 py-3.5 rounded-full border border-slate-300 text-slate-700 hover:bg-slate-100 dark:border-slate-700 dark:text-white dark:hover:bg-slate-800 font-semibold transition-colors flex items-center gap-2"
-              >
-                <Download className="w-4 h-4" />
-                Download Resume
-              </a>
-            </div>
-
-            <div className="mt-10 flex items-center gap-6 justify-center md:justify-start text-slate-500 dark:text-slate-500">
-              <a href="https://github.com/Mahesh8806" target="_blank" rel="noreferrer" className="hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors"><Github className="w-6 h-6" /></a>
-              <a href="https://linkedin.com/in/maheshbunage" target="_blank" rel="noreferrer" className="hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors"><Linkedin className="w-6 h-6" /></a>
-              <a href="mailto:mahesh.bunage21@gmail.com" className="hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors"><Mail className="w-6 h-6" /></a>
-            </div>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="md:w-1/2 relative flex flex-col items-center gap-5 w-full"
-          >
-            <div className="absolute inset-0 bg-cyan-500/5 dark:bg-cyan-500/10 rounded-full blur-3xl -z-10"></div>
-
-            {/* Data pipeline diagram */}
-            <div className="relative w-full max-w-sm md:max-w-md bg-white/70 dark:bg-slate-900/40 border border-slate-200 dark:border-slate-700/50 rounded-2xl p-5 backdrop-blur-xl">
-              <p className="text-[10px] uppercase tracking-widest text-slate-400 dark:text-slate-500 font-semibold mb-5">
-                Daily Pipeline
-              </p>
-              <div className="relative flex items-start justify-between">
-                <div className="absolute top-6 left-0 right-0 h-px bg-slate-200 dark:bg-slate-800"></div>
-                <motion.div
-                  className="absolute top-[22px] w-1.5 h-1.5 rounded-full bg-cyan-500 shadow-[0_0_8px_rgba(6,182,212,0.7)]"
-                  animate={{ left: ['2%', '96%'] }}
-                  transition={{ duration: 3.5, repeat: Infinity, ease: 'linear' }}
-                ></motion.div>
-                {PIPELINE_NODES.map((node) => (
-                  <div key={node.label} className="flex flex-col items-center gap-2 z-10 w-1/5">
-                    <div className="w-11 h-11 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center justify-center text-cyan-500 shadow-sm">
-                      <node.icon className="w-5 h-5" />
-                    </div>
-                    <span className="text-[10px] text-slate-500 dark:text-slate-400 font-medium text-center">{node.label}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Code panel */}
-            <div className="relative w-full max-w-sm md:max-w-md bg-slate-900/95 backdrop-blur-xl border border-slate-700 p-5 rounded-2xl shadow-2xl text-left overflow-hidden">
-              <div className="flex gap-2 mb-4">
-                <div className="w-2.5 h-2.5 rounded-full bg-red-500"></div>
-                <div className="w-2.5 h-2.5 rounded-full bg-yellow-500"></div>
-                <div className="w-2.5 h-2.5 rounded-full bg-green-500"></div>
-              </div>
-              <div className="space-y-1.5 font-mono text-[11px] sm:text-xs text-slate-300 overflow-x-auto">
-                <p className="whitespace-nowrap"><span className="text-purple-400">from</span> airflow <span className="text-purple-400">import</span> DAG</p>
-                <p className="whitespace-nowrap"><span className="text-purple-400">import</span> pyspark.sql <span className="text-purple-400">as</span> spark</p>
-                <p className="text-slate-500 whitespace-nowrap"># Daily ETL: S3 to Snowflake</p>
-                <p className="whitespace-nowrap"><span className="text-purple-400">with</span> DAG(<span className="text-green-400">'daily_ingest'</span>, schedule=<span className="text-green-400">'@daily'</span>):</p>
-                <p className="pl-4 whitespace-nowrap">transform = PySparkOperator(</p>
-                <p className="pl-8 whitespace-nowrap">task_id=<span className="text-green-400">'pyspark_transform'</span></p>
-                <p className="pl-4 whitespace-nowrap">)</p>
-                <div className="mt-3 p-2 bg-black rounded border-l-2 border-cyan-500">
-                  <p className="text-cyan-400 whitespace-nowrap">{'>'} 109 pipelines running</p>
-                  <p className="text-green-400 whitespace-nowrap">{'>'} Status: Healthy</p>
-                </div>
-              </div>
-            </div>
-          </motion.div>
+          </div>
+          <span className="inline-flex items-center gap-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/15 px-2.5 py-1 text-[11px]">
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 pulse-dot" />
+            Open to work
+          </span>
         </div>
       </div>
-    </section>
-  );
-};
+    </div>
+
+    {/* Floating facts: each one is from the resume. */}
+    <m.div
+      initial={{ opacity: 0, x: -16 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ duration: 0.8, ease: EASE, delay: 0.9 }}
+      className="absolute -left-4 sm:-left-10 top-[18%] hidden sm:block"
+    >
+      <div className="card card-solid !rounded-2xl px-3.5 py-2.5">
+        <p className="font-mono text-[10px] uppercase tracking-[0.14em] text-subtle">Experian · 2.5 yrs</p>
+        <p className="text-[13px] font-medium text-fg mt-0.5">~109 production pipelines</p>
+      </div>
+    </m.div>
+    <m.div
+      initial={{ opacity: 0, x: 16 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ duration: 0.8, ease: EASE, delay: 1.05 }}
+      className="absolute -right-3 sm:-right-8 top-[52%] hidden sm:block"
+    >
+      <div className="card card-solid !rounded-2xl px-3.5 py-2.5">
+        <p className="font-mono text-[10px] uppercase tracking-[0.14em] text-subtle">MSc AI · NCI</p>
+        <p className="text-[13px] font-medium text-fg mt-0.5">LLM jailbreaks 77% → &lt;1%</p>
+      </div>
+    </m.div>
+  </m.div>
+);
+
+const Hero: React.FC = () => (
+  <section aria-labelledby="hero-title" className="relative overflow-hidden pt-28 sm:pt-32 lg:pt-36 pb-16 lg:pb-20">
+    <div className="absolute inset-0 grid-lines opacity-60 pointer-events-none" aria-hidden />
+    <div className="data-flow-mask absolute inset-0 pointer-events-none opacity-90" aria-hidden>
+      <DataFlowBackground />
+    </div>
+
+    <div className="container-x relative">
+      <div className="grid lg:grid-cols-[1.25fr_1fr] gap-14 lg:gap-10 items-center">
+        <div>
+          <m.div {...rise(0.05)} className="flex flex-wrap items-center gap-2 mb-7">
+            <span className="chip !bg-accent-soft !border-transparent !text-accent">
+              <span className="w-1.5 h-1.5 rounded-full bg-accent" />
+              {PROFILE.workAuth}
+            </span>
+            <span className="chip">Open to roles in Ireland</span>
+          </m.div>
+
+          <m.p {...rise(0.12)} className="font-mono text-[12px] uppercase tracking-[0.18em] text-muted mb-5">
+            Mahesh Bunage <span className="text-subtle">/</span> Data & AI Engineer
+          </m.p>
+
+          <h1 id="hero-title" className="display text-[2.5rem] leading-[1.03] sm:text-[3.4rem] lg:text-[3.6rem] xl:text-[4rem] text-fg">
+            <m.span {...rise(0.2)} className="block">
+              Engineering intelligent systems.
+            </m.span>
+            <m.span {...rise(0.32)} className="block mt-1 text-muted">
+              Turning <span className="serif-accent text-fg">data</span> into{' '}
+              <span className="serif-accent text-fg">decisions.</span>
+            </m.span>
+          </h1>
+
+          <m.p {...rise(0.44)} className="mt-7 text-[1.05rem] sm:text-lg text-muted leading-relaxed max-w-xl">
+            Data & AI Engineer with 2.5+ years running production pipelines at Experian scale with Airflow, PySpark, AWS
+            and Snowflake. Now building RAG systems, AI agents and LLM safety tooling on top of real data.
+          </m.p>
+
+          <m.div {...rise(0.56)} className="mt-9 flex flex-col sm:flex-row sm:flex-wrap gap-3">
+            <a href="#projects" onClick={anchorClick('projects')} className="btn btn-primary group">
+              View projects
+              <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
+            </a>
+            <a href={PROFILE.resume} target="_blank" rel="noopener noreferrer" className="btn btn-ghost">
+              <Download className="w-4 h-4" />
+              Download resume
+            </a>
+            <a href="#contact" onClick={anchorClick('contact')} className="btn btn-ghost">
+              <Mail className="w-4 h-4" />
+              Contact me
+            </a>
+          </m.div>
+
+          <m.div {...rise(0.66)} className="mt-8 flex items-center gap-5 text-sm">
+            <a href={PROFILE.github} target="_blank" rel="noopener noreferrer" className="btn btn-link gap-2">
+              <Github className="w-4 h-4" /> GitHub
+            </a>
+            <span className="w-px h-4 bg-line-strong" aria-hidden />
+            <a href={PROFILE.linkedin} target="_blank" rel="noopener noreferrer" className="btn btn-link gap-2">
+              <Linkedin className="w-4 h-4" /> LinkedIn
+            </a>
+          </m.div>
+        </div>
+
+        <Portrait />
+      </div>
+
+      <m.dl
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1, delay: 0.9 }}
+        className="mt-16 lg:mt-24 grid grid-cols-2 lg:grid-cols-4 rounded-2xl border border-line bg-surface backdrop-blur-sm overflow-hidden"
+      >
+        {HERO_STATS.map((s, i) => (
+          <div
+            key={s.label}
+            className={`p-5 sm:p-6 border-line ${i % 2 === 0 ? 'border-r' : ''} ${i < 2 ? 'border-b lg:border-b-0' : ''} ${
+              i === 1 ? 'lg:border-r' : ''
+            }`}
+          >
+            <dt className="sr-only">{s.label}</dt>
+            <dd>
+              <span className="block display text-3xl sm:text-4xl text-fg">{s.value}</span>
+              <span className="block mt-2 text-[13px] leading-snug text-muted">{s.label}</span>
+            </dd>
+          </div>
+        ))}
+      </m.dl>
+    </div>
+  </section>
+);
 
 export default Hero;
